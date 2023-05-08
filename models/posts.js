@@ -31,6 +31,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false, // NOT NULL
         type: DataTypes.INTEGER,
       },
+      title: {
+        allowNull: false, // NOT NULL
+        type: DataTypes.STRING,
+      },
       subject: {
         allowNull: false, // NOT NULL
         type: DataTypes.STRING,
@@ -65,7 +69,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Posts",
-    }
+    },
   );
   return Posts;
 };
