@@ -10,4 +10,6 @@ router.use("/like", likesRouter);
 
 router.use("/posts/", commentsRouter);
 
+router.use("/posts/", commentsRouter);
+
 module.exports = router;

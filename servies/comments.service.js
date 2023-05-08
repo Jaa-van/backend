@@ -3,7 +3,6 @@ const CommentsRepository = require("../repositories/comments.repository");
 class CommentsService {
   commentsRepository = new CommentsRepository();
 
-  //
   findOnePost = async (postId) => {
     const post = await this.commentsRepository.findOnePost(postId);
 
@@ -18,6 +17,19 @@ class CommentsService {
     );
 
     return createCommentData;
+  };
+
+  commentsOfPost = async (postId) => {
+    const commentsOfPostData = await this.commentsRepository.commentsOfPost(
+      postId,
+    );
+
+    return commentsOfPostData.map((comment) => {
+      return {
+        comment: comment.comment,
+        nickname: comment.User.nickname,
+      };
+    });
   };
 }
 
