@@ -1,5 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth-middleware");
+
+const CommentsController = require("../controllers/comments.controller");
+const commentsController = new CommentsController();
 
 // 댓글 생성 API
 router.post(

@@ -12,11 +12,6 @@ module.exports = (sequelize, DataTypes) => {
         targetKey: "postId",
         foreignKey: "PostId",
       });
-
-      this.belongsTo(models.Comments, {
-        targetKey: "postId",
-        foreignKey: "PostId",
-      });
     }
   }
   Likes.init(

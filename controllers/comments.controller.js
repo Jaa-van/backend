@@ -1,4 +1,4 @@
-const CommentsService = require("../servies/comments.service");
+const CommentsService = require("../services/comments.service");
 
 class CommentsController {
   commentsService = new CommentsService();
@@ -38,7 +38,7 @@ class CommentsController {
     }
 
     try {
-      const result = await this.commentService.commentsOfPost(postId);
+      const result = await this.commentsService.commentsOfPost(postId);
       return res.status(200).json({ result });
     } catch (error) {
       console.error(error);
@@ -52,8 +52,8 @@ class CommentsController {
     const { userId } = res.locals.user;
     const { postId, commentId } = req.params;
     const { comment } = req.body;
-    const post = await this.commentService.findOnePost(postId);
-    const commentOfPost = await this.commentService.findOneComment(commentId);
+    const post = await this.commentsService.findOnePost(postId);
+    const commentOfPost = await this.commentsService.findOneComment(commentId);
 
     try {
       if (!post) {

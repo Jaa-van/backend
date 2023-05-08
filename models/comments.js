@@ -12,11 +12,6 @@ module.exports = (sequelize, DataTypes) => {
         targetKey: "userId",
         foreignKey: "UserId",
       });
-
-      this.hasMany(models.Likes, {
-        sourceKey: "postId",
-        foreignKey: "PostId",
-      });
     }
   }
   Comments.init(
@@ -53,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Comments",
-    }
+    },
   );
   return Comments;
 };
