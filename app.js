@@ -11,6 +11,8 @@ app.use("/api", router);
 
 //아닙니다 연습입니다
 
+//연습 연습
+
 app.listen(port, () => {
   console.log(port, "포트로 서버가 열렸어요!");
 });
