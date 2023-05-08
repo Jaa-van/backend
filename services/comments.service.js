@@ -26,6 +26,8 @@ class CommentsService {
 
     return commentsOfPostData.map((comment) => {
       return {
+        commentId: comment.commentId,
+        UserId: comment.UserId,
         comment: comment.comment,
         nickname: comment.User.nickname,
       };
@@ -33,14 +35,14 @@ class CommentsService {
   };
 
   findOneComment = async (commentId) => {
-    const commentOfPost = await this.commentRepository.findOneComment(
+    const commentOfPost = await this.commentsRepository.findOneComment(
       commentId,
     );
     return commentOfPost;
   };
 
   updateComment = async (comment, commentId) => {
-    const updateCommentData = await this.commentRepository.updateComment(
+    const updateCommentData = await this.commentsRepository.updateComment(
       comment,
       commentId,
     );
@@ -49,7 +51,7 @@ class CommentsService {
   };
 
   deleteComment = async (commentId) => {
-    const deleteCommentData = await this.commentRepository.deleteComment(
+    const deleteCommentData = await this.commentsRepository.deleteComment(
       commentId,
     );
 

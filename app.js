@@ -1,4 +1,5 @@
 const express = require("express");
+require("express-async-errors");
 const app = express();
 const port = 3000;
 
@@ -9,7 +10,7 @@ const errorHandler = require("./middlewares/error-handler");
 
 app.use(express.json());
 app.use(cookieParser());
-app.use('/api', router);
+app.use("/api", router);
 app.use(errorHandler);
 
 app.listen(port, () => {
