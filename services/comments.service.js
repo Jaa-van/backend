@@ -47,6 +47,14 @@ class CommentsService {
 
     return updateCommentData;
   };
+
+  deleteComment = async (commentId) => {
+    const deleteCommentData = await this.commentRepository.deleteComment(
+      commentId,
+    );
+
+    return deleteCommentData;
+  };
 }
 
 module.exports = CommentsService;

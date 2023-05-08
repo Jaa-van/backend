@@ -78,6 +78,33 @@ class CommentsController {
       throw new Error("404/댓글이 존재하지 않습니다.");
     }
   };
+
+  // 댓글 삭제
+
+  deleteComment = async (req, res, next) => {
+    const { userId } = res.locals.user;
+    const { postId, commentId } = req.params;
+    const post = await this.commentService.findOnePost(postId);
+    const commentOfPost = await this.commentService.findOneComment(commentId);
+    try {
+      if (!post) {
+        throw new Error("404/게시글이 존재하지 않습니다.");
+      }
+
+      if (userId !== post.UserId) {
+        throw new Error("403/댓글의 삭제 권한이 존재하지 않습니다.");
+      }
+      if (!commentOfPost) {
+        throw new Error("404/댓글이 존재하지 않습니다.");
+      }
+
+      await this.commentService.deleteComment(commentId);
+      return res.status(200).json({ message: "댓글을 삭제하였습니다." });
+    } catch (error) {
+      console.error(error);
+      throw new Error("400/댓글 삭제에 실패하였습니다.");
+    }
+  };
 }
 
 module.exports = CommentsController;
