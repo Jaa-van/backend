@@ -8,4 +8,6 @@ const postsRouter = require("./posts.routes");
 router.use("/posts/", [postsRouter, likesRouter]);
 router.use("/like", likesRouter);
 
+router.use("/posts/", commentsRouter);
+
 module.exports = router;
