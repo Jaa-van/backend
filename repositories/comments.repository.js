@@ -21,7 +21,7 @@ class CommentsRepository {
   // 댓글 조회
   commentsOfPost = async (postId) => {
     const commentsOfPostData = await Comments.findAll({
-      attributes: ["comment"],
+      attributes: ["commentId", "UserId", "comment"],
       include: [
         {
           model: Users,
@@ -40,9 +40,9 @@ class CommentsRepository {
   };
   // 댓글 수정
   updateComment = async (comment, commentId) => {
-    const updateCommentData = await this.commentRepository.updateComment(
-      comment,
-      commentId,
+    const updateCommentData = await Comments.update(
+      { comment },
+      { where: { commentId } },
     );
 
     return updateCommentData;
