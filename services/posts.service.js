@@ -50,7 +50,6 @@ class PostsService {
     if (!post) {
       throw new Error("404/게시글이 존재하지 않습니다.");
     }
-    console.log(post, "service임");
     let posts = {
       UserId: post.UserId,
       nickname: post.nickname,

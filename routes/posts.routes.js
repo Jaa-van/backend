@@ -10,10 +10,10 @@ const postsController = new PostsController();
 router.post("/", authMiddleware, postsController.createPost);
 
 //모든 게시물 가져오기 api/posts
-router.get("/", authMiddleware, postsController.getPosts);
+router.get("/", postsController.getPosts); // authMiddleware 제거
 
 //특정 게시물 가져오기
-router.get("/:postId", authMiddleware, postsController.getPost);
+router.get("/:postId", postsController.getPost); // authMiddleware 제거
 
 //게시물 수정하기
 router.put("/:postId", authMiddleware, postsController.putPost);
