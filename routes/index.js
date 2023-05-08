@@ -1,9 +1,8 @@
-const express = require("express");
+//routes에 index.js가 갖는 의미가 뭔지?const express = require('express');
 const router = express.Router();
 
-const usersRouter = require("./users.routes");
 const postsRouter = require("./posts.routes");
-const commentsRouter = require("./comments.routes");
-const likesRouter = require("./likes.routes");
+
+router.use("/posts/", postsRouter);
 
 module.exports = router;
