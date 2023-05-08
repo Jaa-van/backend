@@ -1,7 +1,7 @@
 ---
 name: "[BUGFIX]"
 about: 버그 해결할 기능을 이슈에 등록한다.
-title: ''
+title: "[BUGFIX]"
 labels: BUGFIX
 assignees: ''
 
