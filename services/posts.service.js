@@ -35,9 +35,13 @@ class PostsService {
     //map을 통해 나온 결과 값은 배열 형태로 나간다, 그래서 아래와 같이 객체를 지정해줌
     return allPost.map((post) => {
       return {
+        postId: post.postId,
+        userId: post.UserId,
         title: post.title,
         subject: post.subject,
+        location: post.location,
         imageUrl: post.imageUrl,
+        content: post.content,
         likes: post.likes,
       };
     });
@@ -51,7 +55,8 @@ class PostsService {
       throw new Error("404/게시글이 존재하지 않습니다.");
     }
     let posts = {
-      UserId: post.UserId,
+      postId: post.postId,
+      userId: post.UserId,
       nickname: post.nickname,
       title: post.title,
       subject: post.subject,
