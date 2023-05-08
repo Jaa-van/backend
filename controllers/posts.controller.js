@@ -9,17 +9,7 @@ class PostsController {
     try {
       const { userId } = res.locals.user;
       const { title, subject, location, imageUrl, content } = req.body;
-
       // 서비스 계층에 구현된 createPost 로직을 실행합니다.
-      const createPostData = await this.postsService.createPost(
-        userId,
-        title,
-        subject,
-        location,
-        imageUrl,
-        content,
-      );
-
       if (!title || !subject || !location || !imageUrl || !content) {
         throw new Error("412/모든 필드의 값은 필수 값 입니다.");
       }
@@ -43,6 +33,15 @@ class PostsController {
       if (typeof content !== "string") {
         throw new Error("412/게시글 내용의 형식이 올바르지 않습니다.");
       }
+      const createPostData = await this.postsService.createPost(
+        userId,
+        title,
+        subject,
+        location,
+        imageUrl,
+        content,
+      );
+
       res
         .status(201)
         .json({ message: "게시글을 작성하였습니다.", createPostData });
