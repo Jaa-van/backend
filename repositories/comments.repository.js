@@ -1,6 +1,5 @@
 const { Users, Comments, Posts } = require("../models");
 
-
 class CommentsRepository {
   // postId에 해당하는 게시물 찾기
   findOnePost = async (postId) => {
@@ -32,6 +31,21 @@ class CommentsRepository {
       where: { postId },
     });
     return commentsOfPostData;
+  };
+  // 게시글 댓글
+  findOneComment = async (commentId) => {
+    const commentOfPost = await Comments.findOne({ where: { commentId } });
+
+    return commentOfPost;
+  };
+  // 댓글 수정
+  updateComment = async (comment, commentId) => {
+    const updateCommentData = await this.commentRepository.updateComment(
+      comment,
+      commentId,
+    );
+
+    return updateCommentData;
   };
 }
 

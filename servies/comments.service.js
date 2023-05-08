@@ -31,6 +31,22 @@ class CommentsService {
       };
     });
   };
+
+  findOneComment = async (commentId) => {
+    const commentOfPost = await this.commentRepository.findOneComment(
+      commentId,
+    );
+    return commentOfPost;
+  };
+
+  updateComment = async (comment, commentId) => {
+    const updateCommentData = await this.commentRepository.updateComment(
+      comment,
+      commentId,
+    );
+
+    return updateCommentData;
+  };
 }
 
 module.exports = CommentsService;
