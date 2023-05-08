@@ -126,7 +126,7 @@ class PostsController {
       const existsPost = await this.postsService.findPostById(postId);
 
       if (userId !== existsPost.UserId) {
-        throw new Error("403, 게시글 삭제 권한이 없습니다.");
+        throw new Error("403/게시글 삭제 권한이 없습니다.");
       }
       await this.postsService.deletePost(postId);
       return res.status(200).json({ message: "게시글을 삭제하였습니다." });
