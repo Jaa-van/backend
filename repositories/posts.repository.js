@@ -27,7 +27,6 @@ class PostsRepository {
   //게시글 상세 조회
   findPostById = async (postId) => {
     const post = await Posts.findByPk(postId);
-    console.log(post, "repo 임");
     return post;
   };
   //게시글이 없으면 post=null
@@ -35,7 +34,6 @@ class PostsRepository {
   //게시글 수정
   putPost = async (postId, title, subject, location, imageUrl, content) => {
     const existsPost = await Posts.findByPk(postId);
-    console.log(existsPost);
 
     existsPost.title = title;
     existsPost.subject = subject;
