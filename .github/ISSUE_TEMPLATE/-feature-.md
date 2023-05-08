@@ -1,7 +1,7 @@
 ---
 name: "[FEATURE]"
 about: 구현할 기능을 이슈에 등록한다.
-title: ''
+title: "[FEATURE]"
 labels: FEATURE
 assignees: ''
 
