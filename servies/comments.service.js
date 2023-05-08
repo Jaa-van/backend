@@ -3,7 +3,6 @@ const CommentsRepository = require("../repositories/comments.repository");
 class CommentsService {
   commentsRepository = new CommentsRepository();
 
-  //
   findOnePost = async (postId) => {
     const post = await this.commentsRepository.findOnePost(postId);
 

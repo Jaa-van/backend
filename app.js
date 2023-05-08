@@ -4,6 +4,7 @@ const port = 3000;
 
 const router = require("./routes");
 const cookieParser = require("cookie-parser");
+
 const errorHandler = require("./middlewares/error-handler");
 
 app.use(express.json());

@@ -26,7 +26,9 @@ class CommentsController {
       throw new Error("400/댓글 작성에 실패하였습니다.");
     }
   };
+  
   // 댓글 조회
+
   getComments = async (req, res, next) => {
     const { postId } = req.params;
     const post = await this.commentsService.findOnePost(postId);
