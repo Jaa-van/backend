@@ -4,12 +4,11 @@ const router = express.Router();
 
 const likesRouter = require("./likes.routes");
 const postsRouter = require("./posts.routes");
+const commentsRouter = require("./comments.routes");
+const userRouter = require("./users.routes");
 
-router.use("/posts/", [postsRouter, likesRouter]);
+router.use("/posts/", [postsRouter, likesRouter, commentsRouter]);
 router.use("/like", likesRouter);
-
-router.use("/posts/", commentsRouter);
-
-router.use("/posts/", commentsRouter);
+router.use("/", userRouter);
 
 module.exports = router;
