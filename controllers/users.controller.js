@@ -1,4 +1,4 @@
-const UserService = require("../servies/users.service");
+const UserService = require("../services/users.service");
 
 class UserController {
   userService = new UserService();
@@ -13,7 +13,7 @@ class UserController {
       if (!nicknameFilter)
         throw new Error("412/닉네임의 형식이 일치하지 않습니다.");
       // 패스워드 형식
-      if (typeof title !== "string")
+      if (typeof password !== "string")
         throw new Error("412/패스워드 형식이 일치하지 않습니다.");
       // 닉네임 포함된 경우
       if (password.includes(nickname))
@@ -25,7 +25,7 @@ class UserController {
       // 회원가입 성공
       const signup = await this.userService.signup(email, nickname, password);
       return res.status(200).json({ message: "회원 가입에 성공하였습니다." });
-    } catch (err) {
+    } catch (error) {
       throw new Error(
         error.message || "400/요청한 데이터 형식이 올바르지 않습니다.",
       );
@@ -43,11 +43,12 @@ class UserController {
         throw new Error("412/닉네임 또는 패스워드를 확인해주세요.");
 
       // 로그인 시 토큰생성
-      const tokenmake = await this.userService.tokenmake1(login);
-      res.cookie("Authorization", `Bearer ${tokenmake}}`); // JWT를 Cookie로 할당
+      const tokenmake = await this.userService.tokenmake(login);
+      res.cookie("Authorization", `Bearer ${tokenmake}`); // JWT를 Cookie로 할당
+      console.log(tokenmake);
       res.status(200).json({ tokenmake }); // JWT를 Body로 할당
-      return res.status(200).json({ message: "로그인에 성공하였습니다." });
-    } catch (err) {
+      // return res.status(200).json({ message: "로그인에 성공하였습니다." });
+    } catch (error) {
       throw new Error(error.message || "400/로그인에 실패하였습니다.");
     }
   };

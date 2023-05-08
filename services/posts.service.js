@@ -50,7 +50,9 @@ class PostsService {
     if (!post) {
       throw new Error("404/게시글이 존재하지 않습니다.");
     }
-    return {
+    console.log(post, "service임");
+    let posts = {
+      UserId: post.UserId,
       nickname: post.nickname,
       title: post.title,
       subject: post.subject,
@@ -59,11 +61,18 @@ class PostsService {
       content: post.content,
       likes: post.likes,
     };
+    return posts;
   };
-
   //게시글 수정
-  putPost = async (postId, title, content) => {
-    const post = await this.postsRepository.putPost(postId, title, content);
+  putPost = async (postId, title, subject, location, imageUrl, content) => {
+    const post = await this.postsRepository.putPost(
+      postId,
+      title,
+      subject,
+      location,
+      imageUrl,
+      content,
+    );
     return post;
   };
 

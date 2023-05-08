@@ -7,7 +7,7 @@ class LikesService {
     if (!existsPost) throw new Error("404/게시글이 존재하지 않습니다.");
     const updatedLike = await this.likesRepository.updateLikeDb(postId, userId);
     if (updatedLike == "likesCreate") {
-      await this.likesRepository.addlikesAtPost(postId);
+      await this.likesRepository.addLikesAtPost(postId);
       return "게시글의 좋아요를 등록하였습니다.";
     } else {
       await this.likesRepository.dropLikesAtPost(postId);

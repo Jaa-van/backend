@@ -1,4 +1,5 @@
 const { Posts, Users, Likes } = require("../models");
+const { Op } = require("sequelize");
 
 class LikesRepository {
   findOnePost = async (postId) => {
