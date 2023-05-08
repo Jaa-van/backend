@@ -20,14 +20,13 @@ class CommentsController {
 
     try {
       await this.commentsService.createComment(userId, postId, comment);
-      return res.status(200).json({ message: "댓글을 생성하였습니다." });
+      return res.status(200).json({ message: "댓글을 작성하였습니다." });
     } catch (error) {
       console.error(error);
-      return res
-        .status(404)
-        .json({ errorMessage: "댓글 작성에 실패하였습니다." });
+      throw new Error("400/댓글 작성에 실패하였습니다.");
     }
   };
+  // 댓글 조회
 }
 
 module.exports = CommentsController;
