@@ -8,7 +8,7 @@ class PostsController {
   createPost = async (req, res, next) => {
     try {
       // const { userId } = res.locals.user;
-      const userId = 1001;
+      const userId = 3;
       const { title, subject, location, imageUrl, content } = req.body;
       // 서비스 계층에 구현된 createPost 로직을 실행합니다.
       if (!title || !subject || !location || !imageUrl || !content) {
