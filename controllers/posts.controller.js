@@ -93,8 +93,8 @@ class PostsController {
         throw new Error("412/게시글 내용의 형식이 올바르지 않습니다.");
       }
 
-      if (userId !== existsPost.UserId) {
-        console.log(userId, existsPost.UserId);
+      if (userId !== existsPost.userId) {
+        console.log(userId, existsPost.userId);
         throw new Error("403/게시글의 수정 권한이 존재하지 않습니다.");
       }
 
@@ -107,7 +107,7 @@ class PostsController {
         imageUrl,
         content,
       );
-      console.log(putPost);
+
       return res
         .status(201)
         .json({ message: "게시글을 수정하였습니다.", putPost });
