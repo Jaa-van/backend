@@ -22,6 +22,8 @@ class UserController {
       // 닉네임 중복
       const existUsers = await this.userService.existUsers(nickname);
       if (existUsers) throw new Error("412/중복된 닉네임입니다.");
+      const existEmail = await this.userService.existEmail(email);
+      if (existEmail) throw new Error("412/중복된 이메일입니다.");
 
       // 회원가입 성공
       const signup = await this.userService.signup(email, nickname, password);

@@ -9,6 +9,11 @@ class UserService {
     return existUsers;
   };
 
+  existEmail = async (email) => {
+    const existEmail = await this.userRepository.existEmail(email);
+    return existEmail;
+  };
+
   signup = async (email, nickname, password) => {
     const signup = await this.userRepository.signup(email, nickname, password);
     return signup;
