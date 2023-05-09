@@ -30,9 +30,10 @@ class CommentsController {
   // 댓글 조회
 
   getComments = async (req, res, next) => {
-    const { postId } = req.params;
-    const post = await this.commentsService.findOnePost(postId);
     try {
+      const { postId } = req.params;
+      const post = await this.commentsService.findOnePost(postId);
+
       if (!post) {
         throw new Error("404/게시글이 존재하지 않습니다.");
       }
@@ -48,13 +49,15 @@ class CommentsController {
   // 댓글 수정
 
   updateComment = async (req, res, next) => {
-    const { userId } = res.locals.user;
-    const { postId, commentId } = req.params;
-    const { comment } = req.body;
-    const post = await this.commentsService.findOnePost(postId);
-    const commentOfPost = await this.commentsService.findOneComment(commentId);
-
     try {
+      const { userId } = res.locals.user;
+      const { postId, commentId } = req.params;
+      const { comment } = req.body;
+      const post = await this.commentsService.findOnePost(postId);
+      const commentOfPost = await this.commentsService.findOneComment(
+        commentId,
+      );
+
       if (!post) {
         throw new Error("404/게시글이 존재하지 않습니다.");
       }
@@ -81,11 +84,14 @@ class CommentsController {
   // 댓글 삭제
 
   deleteComment = async (req, res, next) => {
-    const { userId } = res.locals.user;
-    const { postId, commentId } = req.params;
-    const post = await this.commentsService.findOnePost(postId);
-    const commentOfPost = await this.commentsService.findOneComment(commentId);
     try {
+      const { userId } = res.locals.user;
+      const { postId, commentId } = req.params;
+      const post = await this.commentsService.findOnePost(postId);
+      const commentOfPost = await this.commentsService.findOneComment(
+        commentId,
+      );
+
       if (!post) {
         throw new Error("404/게시글이 존재하지 않습니다.");
       }

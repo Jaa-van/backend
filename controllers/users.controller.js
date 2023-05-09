@@ -5,9 +5,10 @@ class UserController {
 
   // 회원가입
   signup = async (req, res, next) => {
-    const { email, nickname, password } = req.body;
-
     try {
+      const { email, nickname, password } = req.body;
+      if (!email || !nickname || !password)
+        throw new Error("412/데이터 형식이 일치하지 않습니다.");
       // 닉네임 형식
       const nicknameFilter = /^[A-Za-z0-9]{3,}$/.test(nickname);
       if (!nicknameFilter)
@@ -34,9 +35,11 @@ class UserController {
 
   // 로그인
   login = async (req, res, next) => {
-    const { email, password } = req.body;
-
     try {
+      const { email, password } = req.body;
+
+      if (!email || !password)
+        throw new Error("412/데이터의 형식이 일치하지 않습니다.");
       // 유저 존재하지 않는 경우
       const login = await this.userService.login(email);
       if (!login || password !== login.password)
