@@ -7,7 +7,7 @@ const postsController = new PostsController();
 //여기까지 쭉 파일을 다 읽어온 후에
 
 //게시글 작성하기 api/posts
-router.post("/", authMiddleware, postsController.createPost);
+router.post("/", postsController.createPost); // authMiddleware test 용으로 제거
 
 //모든 게시물 가져오기 api/posts
 router.get("/", postsController.getPosts); // authMiddleware 제거
