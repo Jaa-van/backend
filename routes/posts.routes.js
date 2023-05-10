@@ -7,7 +7,7 @@ const postsController = new PostsController();
 //여기까지 쭉 파일을 다 읽어온 후에
 
 //게시글 작성하기 api/posts
-router.post("/", postsController.createPost); // remove authMiddleware for frontend test
+router.post("/", authMiddleware, postsController.createPost); 
 
 //모든 게시물 가져오기 api/posts
 router.get("/", postsController.getPosts); // authMiddleware 제거
@@ -17,9 +17,9 @@ router.get("/nickname/", authMiddleware, postsController.getNickname);
 router.get("/:postId", postsController.getPost); // authMiddleware 제거
 
 //게시물 수정하기
-router.put("/:postId", postsController.putPost); // remove authMiddleware for frontend test
+router.put("/:postId", authMiddleware, postsController.putPost); 
 
 //게시물 삭제하기
-router.delete("/:postId", postsController.deletePost); // remove authMiddleware for frontend test
+router.delete("/:postId",authMiddleware, postsController.deletePost); 
 
 module.exports = router;

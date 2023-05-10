@@ -7,8 +7,7 @@ class PostsController {
   //게시글 작성
   createPost = async (req, res, next) => {
     try {
-      // const { userId } = res.locals.user;
-      const userId = 3; // for frontEnd test
+      const { userId } = res.locals.user;
       const { title, subject, location, imageUrl, content } = req.body;
       // 서비스 계층에 구현된 createPost 로직을 실행합니다.
       if (!title || !subject || !location || !imageUrl || !content) {
@@ -88,8 +87,7 @@ class PostsController {
   //게시글 수정
   putPost = async (req, res, next) => {
     try {
-      // const { userId } = res.locals.user;
-      const userId = 3; // for frontEnd test
+      const { userId } = res.locals.user;
       const { postId } = req.params;
       const { title, subject, location, imageUrl, content } = req.body;
 
@@ -135,8 +133,7 @@ class PostsController {
   //게시글 삭제
   deletePost = async (req, res, next) => {
     try {
-      // const { userId } = res.locals.user;
-      const userId = 3; // for frontEnd test
+      const { userId } = res.locals.user;
       const { postId } = req.params;
       const existsPost = await this.postsService.findPostById(postId);
 
