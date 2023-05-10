@@ -50,7 +50,6 @@ class UserController {
       // 로그인 시 토큰생성
       const tokenmake = await this.userService.tokenmake(login);
       res.cookie("Authorization", `Bearer ${tokenmake}`); // JWT를 Cookie로 할당
-      console.log(tokenmake);
       res.status(200).json({ tokenmake }); // JWT를 Body로 할당
       // return res.status(200).json({ message: "로그인에 성공하였습니다." });
     } catch (error) {

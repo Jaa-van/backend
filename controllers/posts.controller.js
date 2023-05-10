@@ -60,6 +60,18 @@ class PostsController {
     res.status(200).json({ data: posts });
   };
 
+  //닉네임 조회
+
+  getNickname = async (req, res, next) => {
+    try {
+      const { userId } = res.locals.user;
+      const existsNickname = await this.postsService.findNicknameById(userId);
+      res.status(200).json({ nickname: existsNickname.nickname });
+    } catch (error) {
+      throw new Error(error.message || "400/닉네임 조회에 실패하였습니다.");
+    }
+  };
+
   //게시글 상세 조회
   getPost = async (req, res, next) => {
     try {

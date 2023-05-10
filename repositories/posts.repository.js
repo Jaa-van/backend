@@ -1,4 +1,5 @@
 const { Posts } = require("../models");
+const { Users } = require("../models");
 
 class PostsRepository {
   //게시글 작성
@@ -53,6 +54,14 @@ class PostsRepository {
   deletePost = async (postId) => {
     const existpost = await Posts.destroy({ where: { postId } });
     return existpost;
+  };
+
+  findNicknameByIdDb = async (userId) => {
+    const existNickname = await Users.findOne({
+      where: { userId: userId },
+      attributes: ["nickname"],
+    });
+    return existNickname;
   };
 }
 

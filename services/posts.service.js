@@ -86,6 +86,12 @@ class PostsService {
 
     return;
   };
+
+  findNicknameById = async (userId) => {
+    const nickname = this.postsRepository.findNicknameByIdDb(userId);
+
+    return nickname;
+  };
 }
 
 module.exports = PostsService;

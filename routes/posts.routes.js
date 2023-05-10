@@ -12,6 +12,7 @@ router.post("/", postsController.createPost); // remove authMiddleware for front
 //모든 게시물 가져오기 api/posts
 router.get("/", postsController.getPosts); // authMiddleware 제거
 
+router.get("/nickname/", authMiddleware, postsController.getNickname);
 //특정 게시물 가져오기
 router.get("/:postId", postsController.getPost); // authMiddleware 제거
 
