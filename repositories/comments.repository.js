@@ -25,7 +25,7 @@ class CommentsRepository {
   // 댓글 조회
   commentsOfPost = async (postId) => {
     const commentsOfPostData = await Comments.findAll({
-      attributes: ["commentId", "UserId", "comment"],
+      attributes: ["commentId", "UserId", "comment", "createdAt", "updatedAt"],
       include: [
         {
           model: Users,
