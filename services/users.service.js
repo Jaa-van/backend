@@ -1,6 +1,9 @@
 const jwt = require("jsonwebtoken");
 const UserRepository = require("../repositories/users.repository");
 
+require("dotenv").config();
+const env = process.env;
+
 class UserService {
   userRepository = new UserRepository();
 
@@ -25,7 +28,7 @@ class UserService {
   };
 
   tokenmake = async (login) => {
-    const token = jwt.sign({ userId: login.userId }, "clo_key");
+    const token = jwt.sign({ userId: login.userId }, env.DB_KEY);
     return token;
   };
 }
