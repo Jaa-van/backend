@@ -30,6 +30,7 @@ class CommentsService {
         UserId: comment.UserId,
         comment: comment.comment,
         nickname: comment.User.nickname,
+        createdAt: comment.createdAt,
       };
     });
   };
