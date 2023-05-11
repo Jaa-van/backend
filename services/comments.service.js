@@ -31,6 +31,7 @@ class CommentsService {
         comment: comment.comment,
         nickname: comment.User.nickname,
         createdAt: comment.createdAt,
+        updatedAt: comment.updatedAt,
       };
     });
   };

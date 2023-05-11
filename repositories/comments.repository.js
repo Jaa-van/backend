@@ -1,6 +1,10 @@
 const { Users, Comments, Posts } = require("../models");
 
 class CommentsRepository {
+  constructor(postsModel) {
+    this.postsModel = postsModel;
+  }
+
   // postId에 해당하는 게시물 찾기
   findOnePost = async (postId) => {
     const post = await Posts.findByPk(postId);
